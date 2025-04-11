@@ -12,6 +12,25 @@ const paramsSchema = z.object({
   week: z.coerce.number(),
 });
 
+export const meta: Route.MetaFunction = ({ params }) => {
+  const date = DateTime.fromObject({
+    weekYear: Number(params.year),
+    weekNumber: Number(params.week),
+  })
+    .setZone("Asia/Seoul")
+    .setLocale("ko");
+
+  return [
+    {
+      title: `Best of week ${date
+        .startOf("week")
+        .toLocaleString(DateTime.DATE_SHORT)} - ${date
+        .endOf("week")
+        .toLocaleString(DateTime.DATE_SHORT)} | wemake`,
+    },
+  ];
+};
+
 export const loader = ({ params }: Route.LoaderArgs) => {
   const { success, data: parsedData } = paramsSchema.safeParse(params);
 
@@ -77,7 +96,7 @@ export default function WeeklyLeaderboardPage({
       <div className="flex items-center justify-center gap-2">
         <Button variant="secondary" asChild>
           <Link
-            to={`/products/leaderboards/weekly/${previousWeek.year}/${previousWeek.month}/${previousWeek.day}`}
+            to={`/products/leaderboards/weekly/${previousWeek.year}/${previousWeek.weekNumber}`}
           >
             &larr; {previousWeek.toLocaleString(DateTime.DATE_SHORT)}
           </Link>
@@ -85,7 +104,7 @@ export default function WeeklyLeaderboardPage({
         {!isToday ? (
           <Button variant="secondary" asChild>
             <Link
-              to={`/products/leaderboards/weekly/${nextWeek.year}/${nextWeek.month}/${nextWeek.day}`}
+              to={`/products/leaderboards/weekly/${nextWeek.year}/${nextWeek.weekNumber}`}
             >
               {nextWeek.toLocaleString(DateTime.DATE_SHORT)} &rarr;
             </Link>

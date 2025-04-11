@@ -12,6 +12,24 @@ const paramsSchema = z.object({
   month: z.coerce.number(),
 });
 
+export const meta: Route.MetaFunction = ({ params }) => {
+  const date = DateTime.fromObject({
+    year: Number(params.year),
+    month: Number(params.month),
+  })
+    .setZone("Asia/Seoul")
+    .setLocale("ko");
+
+  return [
+    {
+      title: `Best of ${date.toLocaleString({
+        month: "long",
+        year: "2-digit",
+      })} | wemake`,
+    },
+  ];
+};
+
 export const loader = ({ params }: Route.LoaderArgs) => {
   const { success, data: parsedData } = paramsSchema.safeParse(params);
 
@@ -76,7 +94,7 @@ export default function MonthlyLeaderboardPage({
       <div className="flex items-center justify-center gap-2">
         <Button variant="secondary" asChild>
           <Link
-            to={`/products/leaderboards/monthly/${previousMonth.year}/${previousMonth.month}/${previousMonth.day}`}
+            to={`/products/leaderboards/monthly/${previousMonth.year}/${previousMonth.month}`}
           >
             &larr;{" "}
             {previousMonth.toLocaleString({
@@ -88,7 +106,7 @@ export default function MonthlyLeaderboardPage({
         {!isToday ? (
           <Button variant="secondary" asChild>
             <Link
-              to={`/products/leaderboards/monthly/${nextMonth.year}/${nextMonth.month}/${nextMonth.day}`}
+              to={`/products/leaderboards/monthly/${nextMonth.year}/${nextMonth.month}`}
             >
               {nextMonth.toLocaleString({
                 month: "long",

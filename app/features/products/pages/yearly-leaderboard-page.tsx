@@ -11,6 +11,22 @@ const paramsSchema = z.object({
   year: z.coerce.number(),
 });
 
+export const meta: Route.MetaFunction = ({ params }) => {
+  const date = DateTime.fromObject({
+    year: Number(params.year),
+  })
+    .setZone("Asia/Seoul")
+    .setLocale("ko");
+
+  return [
+    {
+      title: `Best of ${date.toLocaleString({
+        year: "numeric",
+      })} | wemake`,
+    },
+  ];
+};
+
 export const loader = ({ params }: Route.LoaderArgs) => {
   const { success, data: parsedData } = paramsSchema.safeParse(params);
 
@@ -71,9 +87,7 @@ export default function YearlyLeaderboardPage({
       />
       <div className="flex items-center justify-center gap-2">
         <Button variant="secondary" asChild>
-          <Link
-            to={`/products/leaderboards/yearly/${previousYear.year}/${previousYear.month}/${previousYear.day}`}
-          >
+          <Link to={`/products/leaderboards/yearly/${previousYear.year}`}>
             &larr;{" "}
             {previousYear.toLocaleString({
               year: "numeric",
@@ -82,9 +96,7 @@ export default function YearlyLeaderboardPage({
         </Button>
         {!isToday ? (
           <Button variant="secondary" asChild>
-            <Link
-              to={`/products/leaderboards/yearly/${nextYear.year}/${nextYear.month}/${nextYear.day}`}
-            >
+            <Link to={`/products/leaderboards/yearly/${nextYear.year}`}>
               {nextYear.toLocaleString({
                 year: "numeric",
               })}{" "}
