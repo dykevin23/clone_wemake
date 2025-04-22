@@ -5,7 +5,7 @@ import type { Route } from "./+types/category-page";
 
 export const meta = ({ params }: Route.MetaArgs) => {
   return [
-    { title: `Developer Tools | ProductHunt Clone` },
+    { title: `Developer Tools | wemake` },
     { name: "description", content: `Browse Developer Tools products` },
   ];
 };

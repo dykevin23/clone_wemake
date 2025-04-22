@@ -3,7 +3,7 @@ import type { Route } from "./+types/categories-page";
 import { CategoryCard } from "../components/category-card";
 
 export const meta: Route.MetaFunction = () => [
-  { title: "Categories | ProductHunt Clone" },
+  { title: "Categories | wemake" },
   { name: "description", content: "Browse products by category" },
 ];
 
