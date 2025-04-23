@@ -1,3 +1,3 @@
 export default function ProductReviewsPage() {
-  return <div></div>;
+  return <div>reviews</div>;
 }
