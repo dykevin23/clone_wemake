@@ -36,9 +36,16 @@ export default [
       index("features/products/pages/categories-page.tsx"),
       route("/:category", "features/products/pages/category-page.tsx"),
     ]),
-
     route("/search", "features/products/pages/search-page.tsx"),
     route("/submit", "features/products/pages/submit-page.tsx"),
     route("/promote", "features/products/pages/promote-page.tsx"),
+    ...prefix("/:productId", [
+      index("features/products/pages/product-redirect-page.tsx"),
+      route("/overview", "features/products/pages/product-overview-page.tsx"),
+      ...prefix("/overviews", [
+        index("features/products/pages/product-reviews-page.tsx"),
+        route("/new", "features/products/pages/new-product-review-page.tsx"),
+      ]),
+    ]),
   ]),
 ] satisfies RouteConfig;
