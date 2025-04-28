@@ -2,6 +2,7 @@ import { Form, Link } from "react-router";
 import InputPair from "~/common/components/input-pair";
 import { Button } from "~/common/components/ui/button";
 import type { Route } from "./+types/login-page";
+import AuthButtons from "../components/auth-buttons";
 
 export const meta: Route.MetaFunction = () => {
   return [{ title: "Log In | wemake" }];
@@ -9,7 +10,7 @@ export const meta: Route.MetaFunction = () => {
 
 export default function LoginPage() {
   return (
-    <div className="flex flex-col items-center justify-center h-full">
+    <div className="flex flex-col relative items-center justify-center h-full">
       <Button variant="ghost" asChild className="absolute right-8 left-0 top-8">
         <Link to="/auth/join">Join</Link>
       </Button>
@@ -38,6 +39,7 @@ export default function LoginPage() {
             Log in
           </Button>
         </Form>
+        <AuthButtons />
       </div>
     </div>
   );
