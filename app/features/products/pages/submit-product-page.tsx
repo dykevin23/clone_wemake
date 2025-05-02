@@ -86,11 +86,11 @@ export default function SubmitPage() {
           </Button>
         </div>
         <div className="flex flex-col space-y-2">
-          {icon ? (
-            <div className="size-40 rounded-xl shadow-xl overflow-hidden">
+          <div className="size-40 rounded-xl shadow-xl overflow-hidden">
+            {icon ? (
               <img src={icon} className="w-full h-full object-cover" />
-            </div>
-          ) : null}
+            ) : null}
+          </div>
           <Label className="flex flex-col gap-1">
             Icon
             <small className="text-muted-foreground">
