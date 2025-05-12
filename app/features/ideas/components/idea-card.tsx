@@ -16,7 +16,7 @@ interface IdeaCardProps {
   viewsCount: number;
   postedAt: string;
   likesCount: number;
-  claimed: boolean;
+  claimed?: boolean;
 }
 
 export function IdeaCard({
@@ -25,7 +25,7 @@ export function IdeaCard({
   viewsCount,
   postedAt,
   likesCount,
-  claimed,
+  claimed = false,
 }: IdeaCardProps) {
   return (
     <Card className="bg-transparent hover:bg-card/50 transition-colors">

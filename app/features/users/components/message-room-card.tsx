@@ -9,19 +9,19 @@ import {
   SidebarMenuItem,
 } from "~/common/components/ui/sidebar";
 
-interface MessageCardProps {
+interface MessageRoomCardProps {
   id: string;
   avatarUrl?: string;
   name: string;
   lastMessage: string;
 }
 
-export function MessageCard({
+export function MessageRoomCard({
   id,
   avatarUrl,
   name,
   lastMessage,
-}: MessageCardProps) {
+}: MessageRoomCardProps) {
   const location = useLocation();
   return (
     <SidebarMenuItem>
