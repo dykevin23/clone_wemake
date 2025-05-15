@@ -36,6 +36,20 @@
       "when": 1747209913500,
       "tag": "0004_first_misty_knight",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1747269374808,
+      "tag": "0005_productive_grandmaster",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1747269414813,
+      "tag": "0006_woozy_changeling",
+      "breakpoints": true
     }
   ]
 }
