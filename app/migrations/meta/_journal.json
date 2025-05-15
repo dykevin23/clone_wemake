@@ -50,6 +50,13 @@
       "when": 1747269414813,
       "tag": "0006_woozy_changeling",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1747270588321,
+      "tag": "0007_melted_queen_noir",
+      "breakpoints": true
     }
   ]
 }
