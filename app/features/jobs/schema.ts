@@ -22,7 +22,7 @@ export const jobs = pgTable("jobs", {
   benefits: text().notNull(),
   skills: text().notNull(),
   company_name: text().notNull(),
-  company_log: text().notNull(),
+  company_logo: text().notNull(),
   company_location: text().notNull(),
   apply_url: text().notNull(),
   job_type: jobTypes().notNull(),

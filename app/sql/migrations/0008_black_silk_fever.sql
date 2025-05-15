@@ -1,0 +1,1 @@
+ALTER TABLE "jobs" RENAME COLUMN "company_log" TO "company_logo";
