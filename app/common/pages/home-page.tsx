@@ -54,6 +54,7 @@ export default function HomePage() {
         </div>
         {Array.from({ length: 11 }).map((_, index) => (
           <PostCard
+            key={`postId-${index}`}
             id={`postId-${index}`}
             title="What is the best productivity tool?"
             author="Nico"
