@@ -85,6 +85,13 @@
       "when": 1747288832636,
       "tag": "0011_majestic_the_phantom",
       "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "7",
+      "when": 1747958870020,
+      "tag": "0012_mighty_tyger_tiger",
+      "breakpoints": true
     }
   ]
 }
