@@ -55,7 +55,7 @@ export default function App() {
   return (
     <div
       className={cn({
-        "py-28 px-5 md:px-20": pathname.includes("/auth/"),
+        "py-28 px-5 md:px-20": !pathname.includes("/auth/"),
         "transition-opacity animate-pulse": isLoading,
       })}
     >
