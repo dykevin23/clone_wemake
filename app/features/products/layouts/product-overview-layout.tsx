@@ -22,6 +22,7 @@ export const loader = async ({
 export default function ProductOverviewLayout({
   loaderData,
 }: Route.ComponentProps) {
+  console.log(loaderData.product);
   return (
     <div className="space-y-10">
       <div className="flex justify-between">
@@ -89,6 +90,7 @@ export default function ProductOverviewLayout({
             product_id: loaderData.product.product_id,
             description: loaderData.product.description,
             how_it_works: loaderData.product.how_it_works,
+            review_count: loaderData.product.reviews,
           }}
         />
       </div>
