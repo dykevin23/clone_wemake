@@ -22,7 +22,6 @@ export const loader = async ({
 export default function ProductOverviewLayout({
   loaderData,
 }: Route.ComponentProps) {
-  console.log(loaderData.product);
   return (
     <div className="space-y-10">
       <div className="flex justify-between">

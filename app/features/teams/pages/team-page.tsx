@@ -89,7 +89,9 @@ export default function TeamPage({ loaderData }: Route.ComponentProps) {
         <aside className="col-span-2 space-y-5 border rounded-lg p-6 shadow-sm">
           <div className="flex gap-5">
             <Avatar className="size-14">
-              <AvatarFallback>{loaderData.team.team_leader.name[0]]</AvatarFallback>
+              <AvatarFallback>
+                {loaderData.team.team_leader.name[0]}
+              </AvatarFallback>
               {loaderData.team.team_leader.avatar ? (
                 <AvatarImage src={loaderData.team.team_leader.avatar} />
               ) : null}

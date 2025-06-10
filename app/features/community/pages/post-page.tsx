@@ -17,7 +17,7 @@ import {
 } from "~/common/components/ui/avatar";
 import { Badge } from "~/common/components/ui/badge";
 import Reply from "../components/reply";
-import { getPostById } from "../queries";
+import { getPostById, getReplies } from "../queries";
 import { DateTime } from "luxon";
 
 export const meta: Route.MetaFunction = ({ params }: Route.MetaArgs) => {
@@ -26,7 +26,8 @@ export const meta: Route.MetaFunction = ({ params }: Route.MetaArgs) => {
 
 export const loader = async ({ params }: Route.LoaderArgs) => {
   const post = await getPostById(params.postId);
-  return { post };
+  const replies = await getReplies(params.postId);
+  return { post, replies };
 };
 
 export default function PostPage({ loaderData }: Route.ComponentProps) {
@@ -62,7 +63,7 @@ export default function PostPage({ loaderData }: Route.ComponentProps) {
               <ChevronUpIcon className="size-4 shrink-0" />
               <span>{loaderData.post.upvotes}</span>
             </Button>
-            <div className="space-y-20">
+            <div className="space-y-20 w-full">
               <div className="space-y-2">
                 <h2 className="text-3xl font-bold">{loaderData.post.title}</h2>
                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -97,13 +98,16 @@ export default function PostPage({ loaderData }: Route.ComponentProps) {
                   {loaderData.post.replies} Replies
                 </h4>
                 <div className="flex flex-col gap-5">
-                  <Reply
-                    username="Nicolas"
-                    timestamp="12 hours ago"
-                    avatarUrl="https://github.com/serranoarevalo.png"
-                    content="I've been using TodoList for a while now, and it's really great. It's simple, easy to use, and has a lot of features"
-                    topLevel
-                  />
+                  {loaderData.replies.map((reply) => (
+                    <Reply
+                      username={reply.user.name}
+                      avatarUrl={reply.user.avatar}
+                      content={reply.reply}
+                      timestamp={reply.created_at}
+                      topLevel={true}
+                      replies={reply.post_replies}
+                    />
+                  ))}
                 </div>
               </div>
             </div>
