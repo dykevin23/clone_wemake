@@ -7,6 +7,7 @@ import { Input } from "~/common/components/ui/input";
 import { Button } from "~/common/components/ui/button";
 import { Form } from "react-router";
 import { getPagesBySearch, getProductsBySearch } from "../queries";
+import { makeSSRClient } from "~/supa-client";
 
 export const meta: Route.MetaFunction = () => {
   return [
@@ -21,6 +22,7 @@ const paramsSchema = z.object({
 });
 
 export async function loader({ request }: Route.LoaderArgs) {
+  const { client, headers } = makeSSRClient(request);
   const url = new URL(request.url);
   const { success, data: parsedData } = paramsSchema.safeParse(
     Object.fromEntries(url.searchParams)
@@ -33,11 +35,13 @@ export async function loader({ request }: Route.LoaderArgs) {
     return { products: [], totalPages: 1 };
   }
 
-  const products = await getProductsBySearch({
+  const products = await getProductsBySearch(client, {
     query: parsedData.query,
     page: parsedData.page,
   });
-  const totalPages = await getPagesBySearch({ query: parsedData.query });
+  const totalPages = await getPagesBySearch(client, {
+    query: parsedData.query,
+  });
 
   return { products, totalPages };
 }

@@ -17,6 +17,7 @@ export default function NotificationsPage() {
           userName="Steve Jobs"
           message=" followed you."
           timestamp="2 days ago"
+          seen={false}
         />
       </div>
     </div>

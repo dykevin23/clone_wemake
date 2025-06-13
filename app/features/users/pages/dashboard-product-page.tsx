@@ -9,15 +9,9 @@ import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
+  type ChartConfig,
 } from "~/common/components/ui/chart";
-import {
-  Area,
-  AreaChart,
-  CartesianGrid,
-  Line,
-  LineChart,
-  XAxis,
-} from "recharts";
+import { Area, AreaChart, CartesianGrid, XAxis } from "recharts";
 
 export const meta: Route.MetaFunction = () => [
   { title: "Product Dashboard | wemake" },
