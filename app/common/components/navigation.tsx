@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { Separator } from "./ui/separator";
+import { Separator } from "~/common/components/ui/separator";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -12,17 +12,17 @@ import {
 import { cn } from "~/lib/utils";
 import { Button } from "./ui/button";
 import {
-  DropdownMenuTrigger,
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
-  DropdownMenuGroup,
+  DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import {
-  BarChart2Icon,
+  BarChart3Icon,
   BellIcon,
   LogOutIcon,
   MessageCircleIcon,
@@ -83,12 +83,12 @@ const menus = [
       },
       {
         name: "Internships",
-        description: "Find an internships in our community",
-        to: "/jobs?type=internships",
+        description: "Find an internship in our community",
+        to: "/jobs?type=internship",
       },
       {
-        name: "Submit a Job",
-        description: "Submit a job to our community",
+        name: "Post a Job",
+        description: "Post a job to our community",
         to: "/jobs/submit",
       },
     ],
@@ -140,6 +140,7 @@ const menus = [
     ],
   },
 ];
+
 export default function Navigation({
   isLoggedIn,
   hasNotifications,
@@ -162,7 +163,7 @@ export default function Navigation({
               <NavigationMenuItem key={menu.name}>
                 {menu.items ? (
                   <>
-                    <Link to={menu.to} prefetch="intent">
+                    <Link to={menu.to}>
                       <NavigationMenuTrigger>{menu.name}</NavigationMenuTrigger>
                     </Link>
                     <NavigationMenuContent>
@@ -171,10 +172,9 @@ export default function Navigation({
                           <NavigationMenuItem
                             key={item.name}
                             className={cn([
-                              "select-none rounded-md transition-colors focus:bg-accent hover:bg-accent",
-                              item.to === "/products/promote" &&
-                                "col-span-2 bg-primary/10 hover:bg-primary/20 focus:bg-primary/20",
-                              item.to === "/jobs/submit" &&
+                              "select-none rounded-md transition-colors focus:bg-accent  hover:bg-accent",
+                              (item.to === "/products/promote" ||
+                                item.to === "/jobs/submit") &&
                                 "col-span-2 bg-primary/10 hover:bg-primary/20 focus:bg-primary/20",
                             ])}
                           >
@@ -207,7 +207,7 @@ export default function Navigation({
         </NavigationMenu>
       </div>
       {isLoggedIn ? (
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-4">
           <Button size="icon" variant="ghost" asChild className="relative">
             <Link to="/my/notifications">
               <BellIcon className="size-4" />
@@ -225,9 +225,9 @@ export default function Navigation({
             </Link>
           </Button>
           <DropdownMenu>
-            <DropdownMenuTrigger asChild>
+            <DropdownMenuTrigger>
               <Avatar>
-                <AvatarImage src="" />
+                <AvatarImage src="https://github.com/serranoarevalo.png" />
                 <AvatarFallback>N</AvatarFallback>
               </Avatar>
             </DropdownMenuTrigger>
@@ -240,7 +240,7 @@ export default function Navigation({
               <DropdownMenuGroup>
                 <DropdownMenuItem asChild className="cursor-pointer">
                   <Link to="/my/dashboard">
-                    <BarChart2Icon className="size-4 mr-2" />
+                    <BarChart3Icon className="size-4 mr-2" />
                     Dashboard
                   </Link>
                 </DropdownMenuItem>
