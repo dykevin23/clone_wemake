@@ -99,8 +99,8 @@ export const getReplies = async (
       )
       `
     )
-    .eq("post_id", postId);
-  console.log(data);
+    .eq("post_id", postId)
+    .order("created_at", { ascending: false });
   if (error) throw error;
   return data;
 };
