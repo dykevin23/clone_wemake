@@ -33,9 +33,9 @@ export default function DashboardLayout() {
               <SidebarMenuItem>
                 <SidebarMenuButton
                   asChild
-                  isActive={location.pathname === "/my/ideas"}
+                  isActive={location.pathname === "/my/dashboard/ideas"}
                 >
-                  <Link to="/my/ideas">
+                  <Link to="/my/dashboard/ideas">
                     <SparklesIcon className="size-4" />
                     <span>Ideas</span>
                   </Link>
