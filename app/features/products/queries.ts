@@ -176,7 +176,8 @@ export const getReviews = async (
       )
       `
     )
-    .eq("product_id", productId);
+    .eq("product_id", productId)
+    .order("created_at", { ascending: false });
 
   if (error) throw error;
   return data;

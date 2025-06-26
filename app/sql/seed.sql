@@ -10,11 +10,11 @@ VALUES
 -- Seed products
 INSERT INTO products (name, tagline, description, how_it_works, icon, url, stats, profile_id, category_id, created_at, updated_at)
 VALUES
-  ('DevTool Pro', 'The ultimate developer toolkit', 'Comprehensive development suite', 'Easy integration with existing workflow', '/icons/devtool.png', 'https://devtool.pro', '{"views": 0, "reviews": 0}', 'f7487b20-818b-49a2-866b-45f3962309c6', 1, NOW(), NOW()),
-  ('DesignMaster', 'Design like a pro', 'Professional design platform', 'Intuitive interface for designers', '/icons/design.png', 'https://designmaster.app', '{"views": 0, "reviews": 0}', 'f7487b20-818b-49a2-866b-45f3962309c6', 2, NOW(), NOW()),
-  ('MarketGenius', 'Smart marketing automation', 'AI-powered marketing platform', 'Automated marketing workflows', '/icons/market.png', 'https://marketgenius.io', '{"views": 0, "reviews": 0}', 'f7487b20-818b-49a2-866b-45f3962309c6', 3, NOW(), NOW()),
-  ('CodeBuddy', 'Your coding companion', 'AI pair programming assistant', 'Real-time code suggestions', '/icons/code.png', 'https://codebuddy.dev', '{"views": 0, "reviews": 0}', 'f7487b20-818b-49a2-866b-45f3962309c6', 4, NOW(), NOW()),
-  ('DataViz', 'Beautiful data visualization', 'Turn data into insights', 'Drag-and-drop visualization builder', '/icons/dataviz.png', 'https://dataviz.app', '{"views": 0, "reviews": 0}', 'f7487b20-818b-49a2-866b-45f3962309c6', 5, NOW(), NOW());
+  ('DevTool Pro', 'The ultimate developer toolkit', 'Comprehensive development suite', 'Easy integration with existing workflow', '/icons/devtool.png', 'https://devtool.pro', '{"views": 0, "reviews": 0}', 'eb173d7f-0cdf-4747-9ea5-26645e7195b6', 1, NOW(), NOW()),
+  ('DesignMaster', 'Design like a pro', 'Professional design platform', 'Intuitive interface for designers', '/icons/design.png', 'https://designmaster.app', '{"views": 0, "reviews": 0}', 'eb173d7f-0cdf-4747-9ea5-26645e7195b6', 2, NOW(), NOW()),
+  ('MarketGenius', 'Smart marketing automation', 'AI-powered marketing platform', 'Automated marketing workflows', '/icons/market.png', 'https://marketgenius.io', '{"views": 0, "reviews": 0}', 'eb173d7f-0cdf-4747-9ea5-26645e7195b6', 3, NOW(), NOW()),
+  ('CodeBuddy', 'Your coding companion', 'AI pair programming assistant', 'Real-time code suggestions', '/icons/code.png', 'https://codebuddy.dev', '{"views": 0, "reviews": 0}', 'eb173d7f-0cdf-4747-9ea5-26645e7195b6', 4, NOW(), NOW()),
+  ('DataViz', 'Beautiful data visualization', 'Turn data into insights', 'Drag-and-drop visualization builder', '/icons/dataviz.png', 'https://dataviz.app', '{"views": 0, "reviews": 0}', 'eb173d7f-0cdf-4747-9ea5-26645e7195b6', 5, NOW(), NOW());
 
 -- Seed product upvotes (bridge table)
 INSERT INTO product_upvotes (product_id, profile_id)

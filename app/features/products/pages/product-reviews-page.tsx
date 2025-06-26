@@ -6,6 +6,10 @@ import { useOutletContext } from "react-router";
 import { getReviews } from "../queries";
 import type { Route } from "./+types/product-reviews-page";
 import { makeSSRClient } from "~/supa-client";
+import { getLoggedInUserId } from "~/features/users/queries";
+import { z } from "zod";
+import { createProductReview } from "../mutations";
+import { useEffect, useState } from "react";
 
 export function meta() {
   return [
@@ -20,16 +24,53 @@ export const loader = async ({ request, params }: Route.LoaderArgs) => {
   return { reviews };
 };
 
+const formSchema = z.object({
+  review: z.string().min(1),
+  rating: z.coerce.number().min(1).max(5),
+});
+
+export const action = async ({ request, params }: Route.ActionArgs) => {
+  const { client } = makeSSRClient(request);
+  const userId = await getLoggedInUserId(client);
+  const formData = await request.formData();
+  const { success, data, error } = formSchema.safeParse(
+    Object.fromEntries(formData)
+  );
+  if (!success) {
+    return {
+      formErrors: error.flatten().fieldErrors,
+    };
+  }
+  await createProductReview(client, {
+    productId: params.productId,
+    review: data.review,
+    rating: data.rating,
+    userId,
+  });
+  return {
+    ok: true,
+  };
+};
+
 export default function ProductReviewsPage({
   loaderData,
+  actionData,
 }: Route.ComponentProps) {
-  const { review_count } = useOutletContext<{ review_count: number }>();
+  const { review_count } = useOutletContext<{ review_count: string }>();
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    if (actionData?.ok) {
+      setOpen(false);
+    }
+  }, [actionData]);
+
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <div className="space-y-10 max-w-xl">
         <div className="flex justify-between items-center">
           <h2 className="text-2xl font-bold">
-            {review_count} {review_count === 1 ? "Review" : "Reviews"}
+            {review_count} {review_count === "1" ? "Review" : "Reviews"}
           </h2>
           <DialogTrigger>
             <Button variant="secondary">Write a review</Button>
