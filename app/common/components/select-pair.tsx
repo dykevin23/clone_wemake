@@ -26,7 +26,7 @@ export default function SelectPair({
     label: string;
     value: string;
   }[];
-  defaultValue: string;
+  defaultValue?: string;
 }) {
   const [open, setOpen] = useState(false);
   return (
