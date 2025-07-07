@@ -141,6 +141,13 @@
       "when": 1751848284745,
       "tag": "0019_funny_big_bertha",
       "breakpoints": true
+    },
+    {
+      "idx": 20,
+      "version": "7",
+      "when": 1751875589669,
+      "tag": "0020_little_mathemanic",
+      "breakpoints": true
     }
   ]
 }

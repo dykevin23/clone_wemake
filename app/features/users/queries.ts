@@ -100,3 +100,36 @@ export const getProductsByUserId = async (
   if (error) throw error;
   return data;
 };
+
+export const getNotifications = async (
+  client: SupabaseClient<Database>,
+  { userId }: { userId: string }
+) => {
+  const { data, error } = await client
+    .from("notifications")
+    .select(
+      `
+      notification_id,
+      type,
+      source:profiles!source_id(
+        profile_id,
+        name,
+        avatar
+      ),
+      product:products!product_id(
+        product_id,
+        name
+      ),
+      posts!post_id(
+        post_id,
+        title
+      ),
+      target_id,
+      seen,
+      created_at
+      `
+    )
+    .eq("target_id", userId);
+  if (error) throw error;
+  return data;
+};
