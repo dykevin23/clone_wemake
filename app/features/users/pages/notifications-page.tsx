@@ -26,6 +26,7 @@ export default function NotificationsPage({
         {loaderData.notifications.map((notification) => (
           <NotificationCard
             key={notification.notification_id}
+            id={notification.notification_id}
             avatarUrl={notification.source?.avatar ?? ""}
             avatarFallback={notification.source?.name?.[0] ?? ""}
             userName={notification.source?.name ?? ""}
