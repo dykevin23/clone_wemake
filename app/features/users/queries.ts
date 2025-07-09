@@ -5,7 +5,7 @@ import { redirect } from "react-router";
 
 export const getUserProfile = async (
   client: SupabaseClient<Database>,
-  username: string
+  { username }: { username: string }
 ) => {
   const { data, error } = await client
     .from("profiles")

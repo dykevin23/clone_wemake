@@ -113,11 +113,12 @@ export default [
       "features/users/pages/see-notifications-page.tsx"
     ),
   ]),
-  layout("features/users/layouts/profile-layout.tsx", [
-    ...prefix("/users/:username", [
+  ...prefix("/users/:username", [
+    layout("features/users/layouts/profile-layout.tsx", [
       index("features/users/pages/profile-page.tsx"),
       route("/products", "features/users/pages/profile-products-page.tsx"),
       route("/posts", "features/users/pages/profile-post-page.tsx"),
     ]),
+    route("/messages", "features/users/pages/send-message-page.tsx"),
   ]),
 ] satisfies RouteConfig;
