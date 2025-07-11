@@ -47,8 +47,8 @@ export type Database = MergeDeep<
 >;
 
 export const browserClient = createBrowserClient<Database>(
-  process.env.SUPABASE_URL!,
-  process.env.SUPABASE_ANON_KEY!
+  "https://kfohbidwzzsqhjmveqmk.supabase.co",
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imtmb2hiaWR3enpzcWhqbXZlcW1rIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDcwOTg5MjQsImV4cCI6MjA2MjY3NDkyNH0.WFoiaievePQyCeKPeRkbHEdDPfghLNTACg11UfvA09Q"
 );
 
 export const makeSSRClient = (request: Request) => {
